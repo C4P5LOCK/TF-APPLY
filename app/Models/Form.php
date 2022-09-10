@@ -24,4 +24,8 @@ class Form extends Model
         'qualification',
 
     ];
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }

@@ -20,7 +20,7 @@ class CreateFormsTable extends Migration
             $table->string('mname')->nullable();
             $table->string('lname');
             $table->string('email');
-            $table->string('phone');
+            $table->bigInteger('phone');
             $table->text('address1');
             $table->text('address2')->nullable();
             $table->string('country');

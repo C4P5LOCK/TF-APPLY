@@ -26,15 +26,15 @@ class ApplicationFormRequest extends FormRequest
         return [
             'fname' => 'required',
             'lname' =>  'required',
-            'mname' =>  'required',
-            'phone' => 'required',
+            'mname' =>  'nullable',
+            'phone' => 'required|min:8|max:11|regex:/^([0-9\s\-\+\(\)]*)$/',
             'email' => 'required',
             'address1' => 'required',
             'country' => 'required',
             'state'  => 'required',
             'zip'    =>  'required',
             'institution' => 'required',
-            'qua;ification' => 'required',
+            'qualification' => 'required',
             
         ];
     }

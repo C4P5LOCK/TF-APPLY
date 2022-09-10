@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 use App\Http\Requests\ApplicationFormRequest;
 use Illuminate\Http\Request;
+use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Form;
 
 class ApplicantFormController extends Controller
 {
@@ -14,7 +17,11 @@ class ApplicantFormController extends Controller
     public function index()
     {
         //
-        return view('Applicant.Form.index');
+        $form = Form::all()->first();
+        $user = Auth::user();
+        // return view('pages.editprofile')->withUser($user);
+        return view('Applicant.Form.index',compact('user','form'));
+        //return dd($form);
     }
 
     /**
@@ -36,7 +43,13 @@ class ApplicantFormController extends Controller
     public function store(ApplicationFormRequest $request)
     {
         //
-        return 'vskvnvk';
+        $user = Auth::user();
+
+        $input = $request->all();
+
+        $user->form()->create($input); //This enters the user_id to the form table
+
+       // return dd($input);
     }
 
     /**
