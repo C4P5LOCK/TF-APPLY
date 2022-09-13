@@ -61,6 +61,8 @@ class ApplicantFormController extends Controller
     public function show($id)
     {
         //
+        $form = Form::findOrFail($id);
+        return view ('Applicant.Form.show',compact('form'))->with('id',$form->id);
     }
 
     /**
@@ -72,6 +74,8 @@ class ApplicantFormController extends Controller
     public function edit($id)
     {
         //
+        $form = Form::findOrFail($id);
+        return view('Applicant.Form.edit',compact('form'))->with('id',$form->id);
     }
 
     /**
@@ -84,6 +88,12 @@ class ApplicantFormController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $form = Form::findOrFail($id);
+        $input = $request->all();
+
+        $form->update($input);
+
+        return redirect('/applicant')->with('success','Form updated succesfully!');
     }
 
     /**

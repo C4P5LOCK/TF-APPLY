@@ -1,7 +1,7 @@
 @extends('layouts.applicantdash')
 
 @section('content')
-@include('flash-message')
+
 
 
 
@@ -9,21 +9,17 @@
         <div class="row justify-content-center">
             <div class="col-md-10 mt-4">
                 <div class="card card-default">
-                    <div class="card-header">FORM</div>
+                    <div class="card-header">EDIT FORM</div>
                     <div class="card-body">
 
-                {{-- @if($form) --}}
-                @if($form->user_id == auth()->user()->id){
-                    "You have Submitted the Form, You can still Edit or Review";
-                }
-                @else{
-
+               
                 
 
-                <form action={{action('App\Http\Controllers\ApplicantFormController@store',$form->id)}} method="POST">
+                <form action={{action('App\Http\Controllers\ApplicantFormController@update',$form->id)}} method="POST">
                     {{-- @csrf <!{{ csrf_field()}}> --}}
                     @csrf {{csrf_field()}}
-                    
+                    @method('PUT')
+
                     <div class="row">
                         <div class="col-md-4 pr-md-1 text-left">
                             <div class="form-group"><label class="control-label">First Name</label>
@@ -73,7 +69,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-phone"></i></span>
                                   </div>
-                                <input id="" type="text" class="form-control" name="phone" value="{{ old('phone') }}" placeholder="Phone">
+                                <input id="" type="text" class="form-control" name="phone" value="{{ old('phone',$form->phone) }}" placeholder="Phone">
                                 @if($errors->has('phone'))
                                     <div class="error">{{ $errors->first('phone','Phone Required') }}</div>
                                  @endif
@@ -88,7 +84,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="bi bi-house-fill"></i></span>
                                   </div>
-                                <input id="" type="text" class="form-control" name="address1" value="{{ old('address1') }}" placeholder="Address 1">
+                                <input id="" type="text" class="form-control" name="address1" value="{{ old('address1',$form->address1) }}" placeholder="Address 1">
                                 
                               </div>
                         </div>
@@ -98,7 +94,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="bi bi-house-fill"></i></span>
                                   </div>
-                                <input id="" type="text" class="form-control" name="address2" value="{{ old('address2') }}" placeholder="Address 2">
+                                <input id="" type="text" class="form-control" name="address2" value="{{ old('address2',$form->address2) }}" placeholder="Address 2">
                               </div>
                         </div>
 
@@ -108,19 +104,19 @@
 
                       <div class="row"><div class="col-md-4 pr-md-1 text-left">
                           <div class="form-group"><label class="control-label">Country</label>
-                            <input aria-describedby="addon-right addon-left" placeholder="Country" value="{{ old('country') }}" name="country" class="form-control">
+                            <input aria-describedby="addon-right addon-left" placeholder="Country" value="{{ old('country',$form->country) }}" name="country" class="form-control">
                           </div>
                         </div>
                      
                      <div class="col-md-4 px-md-1 text-left">
                          <div class="form-group"><label class="control-label">State/City</label>
-                           <input aria-describedby="addon-right addon-left" placeholder="State" value="{{ old('state') }}" name="state" class="form-control">
+                           <input aria-describedby="addon-right addon-left" placeholder="State" value="{{ old('state',$form->state) }}" name="state" class="form-control">
                         </div>
                     </div>
 
                       <div class="col-md-4 pl-md-1 text-left">
                           <div class="form-group"><label class="control-label">Postal Code</label>
-                            <input aria-describedby="addon-right addon-left" placeholder="ZIP Code" name="zip" value="{{ old('zip') }}" class="form-control">
+                            <input aria-describedby="addon-right addon-left" placeholder="ZIP Code" name="zip" value="{{ old('zip',$form->zip) }}" class="form-control">
                           </div>
                       </div>
 
@@ -135,7 +131,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="bi bi-house-fill"></i></span>
                                           </div>
-                                        <input id="" type="text" class="form-control" name="institution" value="{{ old('institution') }}" placeholder="Name of Institution">
+                                        <input id="" type="text" class="form-control" name="institution" value="{{ old('institution',$form->institution) }}" placeholder="Name of Institution">
                                       </div>
                                 </div>
         
@@ -144,7 +140,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-calendar"></i></span>
                                           </div>
-                                          <select class="form-control" name="qualification">
+                                          <select class="form-control" name="qualification" value="{{old('qualification',$form->qualification)}}">
                                             <option>Select</option>
                                             <option>Bsc/BTech</option>
                                             <option>HND</option>
@@ -157,10 +153,10 @@
 
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Submit</button>      
-                 </form>
-                }
-                @endif
+                        <button type="submit" class="btn btn-primary">Update</button>      
+                  </form>
+                
+                
                     </div><!--End of Card Body-->
 
                 </div>
@@ -169,11 +165,6 @@
   
     </div><!--end of container-->
 
-
-
-
-
-               
-                {{-- @endif --}}
+ {{-- @endif --}}
 
 @endsection

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Form;
 
 class ApplicantController extends Controller
 {
@@ -14,7 +15,12 @@ class ApplicantController extends Controller
     public function index()
     {
         //
-        return view ('Applicant.index');
+        $user = auth()->user();
+        $form = Form::where('user_id',$user->id)->first();
+        // $user = auth()->user();
+        // $userform = Form::where('id',$user->id)->get();
+        return view ('Applicant.index',compact('form'));
+        
     }
 
     /**

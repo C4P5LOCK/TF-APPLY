@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\User;
+use App\Models\Form;
 use Illuminate\Http\Request;
 
 class ApplicantProfileController extends Controller
@@ -14,10 +15,12 @@ class ApplicantProfileController extends Controller
     public function index()
     {
         $user = auth()->user();
-        $users = User::where('id',$user->id)->get();
+        $users = User::where('id',$user->id)->first();
+        $form = Form::where('id',$user->id)->first();
 
-       // return dd($users);
-        return view('Applicant.Profile.index',compact('users'));
+      
+        return view('Applicant.Profile.index',compact('users','form'));
+         //return dd($form);
     }
 
     /**

@@ -17,6 +17,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
+
 Auth::routes(['verify' =>true]);
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('verified');
@@ -26,6 +29,7 @@ Route::group(['middleware' => 'verified'],function(){
     Route::resource('/applicant',App\Http\Controllers\ApplicantController::class);
     Route::resource('/profile',App\Http\Controllers\ApplicantProfileController::class);
     Route::resource('/form',App\Http\Controllers\ApplicantFormController::class);
+    //Route::get('/applicant',App\Http\Controllers\ApplicantDashboardController::class);
    
 });
 

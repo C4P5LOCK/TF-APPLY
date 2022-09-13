@@ -1,8 +1,9 @@
 @extends('layouts.applicantdash')
 
 @section('content')
-
-<h1>Welcome Applicant</h1>
+@include('flash-message')
+<h4>Welcome {{auth()->user()->fname}}!</h4>
+<hr>
 
 
 

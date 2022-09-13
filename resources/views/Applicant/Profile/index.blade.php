@@ -53,11 +53,11 @@
             <div class="card-body">
             <strong><i class="fas fa-book mr-1"></i> Education</strong>
             <p class="text-muted">
-            B.S. in Computer Science from the University of Tennessee at Knoxville
+            {{$form->institution}}
             </p>
             <hr>
             <strong><i class="fas fa-map-marker-alt mr-1"></i> Location</strong>
-            <p class="text-muted">Malibu, California</p>
+            <p class="text-muted">{{$form->country}}, {{$form->state}}</p>
             <hr>
             <strong><i class="fas fa-pencil-alt mr-1"></i> Skills</strong>
             <p class="text-muted">
