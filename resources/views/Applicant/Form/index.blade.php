@@ -12,15 +12,15 @@
                     <div class="card-header">FORM</div>
                     <div class="card-body">
 
-                {{-- @if($form) --}}
-                @if($form->user_id == auth()->user()->id){
+                
+                @if(auth()->user()->form_id != 0)
                     "You have Submitted the Form, You can still Edit or Review";
-                }
-                @else{
+                
+                @else
 
                 
 
-                <form action={{action('App\Http\Controllers\ApplicantFormController@store',$form->id)}} method="POST">
+                <form action={{action('App\Http\Controllers\ApplicantFormController@store')}} method="POST">
                     {{-- @csrf <!{{ csrf_field()}}> --}}
                     @csrf {{csrf_field()}}
                     
@@ -45,7 +45,7 @@
 
                         <div class="col-md-4 pl-md-1 text-left">
                             <div class="form-group"><label class="control-label"> Other Name</label>
-                                <input aria-describedby="addon-right addon-left" placeholder="Other Name" name="mname" value="{{ old('mname',$form->mname) }}" class="form-control"><!---->
+                                <input aria-describedby="addon-right addon-left" placeholder="Other Name" name="mname" value="{{ old('mname') }}" class="form-control"><!---->
                                 @if($errors->has('mname'))
                                 <div class="error">{{ $errors->first('mname','Middle Name required') }}</div>
                                 @endif
@@ -159,7 +159,7 @@
 
                         <button type="submit" class="btn btn-primary">Submit</button>      
                  </form>
-                }
+                
                 @endif
                     </div><!--End of Card Body-->
 

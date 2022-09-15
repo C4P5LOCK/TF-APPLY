@@ -171,7 +171,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src={{asset("/assets/dist/img/user2-160x160.jpg")}} class="img-circle elevation-2" alt="User Image">
+          <img src="/images/placeholder.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block">{{Auth::user()->lname;}}</a>
@@ -210,18 +210,33 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <p>Fill</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="{{route('form.edit',$form->id)}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Edit</p>
-                </a>
-              </li>
-              <li class="nav-item">
+
+              @if(auth()->user()->form_id != '0')
+                
+                <li class="nav-item">
+                  <a href="{{route('form.edit',auth()->user()->form->id)}}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Edit</p>
+                  </a>
+                </li>
+            
+                <li class="nav-item">
+                  <a href="{{route('form.show',auth()->user()->form->id)}}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Show</p>
+                  </a>
+                </li>
+              @endif
+                
+         
+              
+              {{-- <li class="nav-item">
                 <a href="{{route('form.show',$form->id)}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Review</p>
                 </a>
-              </li>
+              </li> --}}
+
             </ul>
           </li>
           <li class="nav-item">

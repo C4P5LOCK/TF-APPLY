@@ -37,7 +37,7 @@
             <b>Approved</b> <a class="float-right">No</a>
             </li>
             </ul>
-            <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
+            <a href="{{route('profile.edit',$users->id)}}" class="btn btn-primary btn-block"><b>Edit Profile</b></a>
             </div>
             
             </div>

@@ -15,9 +15,9 @@ class ApplicantDashboardController extends Controller
     public function __invoke(Request $request)
     {
         //
-        $user = auth()->user();
-        $form = Form::where('user_id',$user->id)->first();
-        return view ('layouts.applicantdash',compact('form'));
+        // $user = auth()->user();
+        // $form = Form::where('user_id',$user->id)->first();
+        // return view ('layouts.applicantdash',compact('formm'));
 
         //return dd($form);
     }

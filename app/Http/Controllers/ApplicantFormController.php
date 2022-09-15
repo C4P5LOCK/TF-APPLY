@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Form;
+use App\Models\User;
+use Carbon\Carbon;
 
 class ApplicantFormController extends Controller
 {
@@ -46,10 +48,19 @@ class ApplicantFormController extends Controller
         $user = Auth::user();
 
         $input = $request->all();
-
         $user->form()->create($input); //This enters the user_id to the form table
+      
+        // $user->form_id = $user->form->id;
+        // $data = $user->form_id;
+        // $data->save();
 
-       // return dd($input);
+        $userformid = User::where('id',$user->id)->first();
+        $userformid->form_id = $user->form->id;
+        $userformid->save();
+
+       // return dd($userformid);
+       return redirect('/applicant')->with('success','Form submitted sucessfully!');
+        
     }
 
     /**
@@ -61,8 +72,9 @@ class ApplicantFormController extends Controller
     public function show($id)
     {
         //
+        $date = Carbon::now();
         $form = Form::findOrFail($id);
-        return view ('Applicant.Form.show',compact('form'))->with('id',$form->id);
+        return view ('Applicant.Form.show',compact('form','date'))->with('id',$form->id);
     }
 
     /**

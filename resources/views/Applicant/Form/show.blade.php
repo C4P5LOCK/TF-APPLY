@@ -1,3 +1,4 @@
+
 @extends('layouts.applicantdash')
 
 @section('content')
@@ -18,7 +19,7 @@
             <div class="col-12">
             <h4>
             <i class="fas fa-globe"></i> TF Apply.
-            <small class="float-right">Date: 2/10/2014</small>
+            <small class="float-right">Date: {{$date->toDayDateTimeString()}}</small>
             </h4>
             </div>
         </div>

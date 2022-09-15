@@ -16,11 +16,11 @@ class ApplicantProfileController extends Controller
     {
         $user = auth()->user();
         $users = User::where('id',$user->id)->first();
-        $form = Form::where('id',$user->id)->first();
+        $form = Form::where('user_id',$user->id)->first();
 
       
         return view('Applicant.Profile.index',compact('users','form'));
-         //return dd($form);
+        // return dd($form);
     }
 
     /**
@@ -64,6 +64,11 @@ class ApplicantProfileController extends Controller
     public function edit($id)
     {
         //
+        $user = auth()->user();
+        $users = User::where('id',$user->id)->first();
+        $form = Form::where('user_id',$user->id)->first();
+
+        return view ('Applicant.Profile.edit',compact('form','users'));
     }
 
     /**
@@ -76,6 +81,18 @@ class ApplicantProfileController extends Controller
     public function update(Request $request, $id)
     {
         //
+        
+        $user = User::findOrFail($id);
+        if($file = $request->file('profilepic')){
+            $name = time().$file->getClientOriginalName();
+            $file->move('images',$name);
+            $input['profilepic'] = 'profilepic';
+        }
+
+            $input = $request->all();
+            $user->update($input);
+            return back()->with('success','Profile updated succesfully!');
+
     }
 
     /**
