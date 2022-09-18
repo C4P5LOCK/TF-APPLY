@@ -22,7 +22,7 @@
             <div class="card card-primary card-outline">
             <div class="card-body box-profile">
             <div class="text-center">
-            <img class="profile-user-img img-fluid img-circle" src={{asset("/assets/dist/img/user2-160x160.jpg")}} alt="User profile picture">
+            <img class="profile-user-img img-fluid img-circle" src="/images/{{auth()->user()->profilepic}}" alt="User profile picture">
             </div>
             <h3 class="profile-username text-center">{{auth()->user()->fname}}, {{auth()->user()->lname}}</h3>
             
@@ -51,10 +51,10 @@
             </div>
 
             <div class="card-body">
-                <form action={{action('App\Http\Controllers\ApplicantFormController@update',$form->id)}} method="POST" enctype="multipart/form-data">
+                <form action={{action('App\Http\Controllers\ApplicantProfileController@update',$user->id)}} method="POST" enctype="multipart/form-data">
                     {{-- @csrf <!{{ csrf_field()}}> --}}
                     @csrf {{csrf_field()}}
-                    @method('PUT')
+                    @method('PATCH')
     
                    
                     <div class="form-group"><label class="control-label">First Name</label>
@@ -65,15 +65,15 @@
                     </div>
 
                     <div class="form-group"><label class="control-label">Last Name</label>
-                        <input aria-describedby="addon-right addon-left" placeholder="First Name" name="fname" value="{{auth()->user()->fname}}" class="form-control">
-                        @if($errors->has('fname'))
+                        <input aria-describedby="addon-right addon-left" placeholder="Last Name" name="lname" value="{{auth()->user()->lname}}" class="form-control">
+                        @if($errors->has('lname'))
                             <div class="error">{{ $errors->first('fname','First Name required') }}</div>
                             @endif
                     </div>
 
                     <div class="form-group"><label class="control-label">Other Name</label>
-                        <input aria-describedby="addon-right addon-left" placeholder="First Name" name="fname" value="{{auth()->user()->fname}}" class="form-control">
-                        @if($errors->has('fname'))
+                        <input aria-describedby="addon-right addon-left" placeholder="Other Name" name="mname" value="{{auth()->user()->mname}}" class="form-control">
+                        @if($errors->has('mname'))
                             <div class="error">{{ $errors->first('fname','First Name required') }}</div>
                             @endif
                     </div>
@@ -84,12 +84,13 @@
                               <span class="input-group-text">Upload Profile Picture</span>
                             </div>
                             <div class="custom-file">
-                              <input type="file" class="custom-file-input" id="inputGroupFile01">
+                              <input type="file" class="custom-file-input" name="profilepic" id="inputGroupFile01">
                               <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
                             </div>
                           </div>
                     </div>
                         
+                    <button type="submit" class="btn btn-primary">Update</button>  
                     
                 </form>
 

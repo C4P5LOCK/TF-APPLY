@@ -22,7 +22,7 @@
             <div class="card card-primary card-outline">
             <div class="card-body box-profile">
             <div class="text-center">
-            <img class="profile-user-img img-fluid img-circle" src={{asset("/assets/dist/img/user2-160x160.jpg")}} alt="User profile picture">
+            <img class="profile-user-img img-fluid img-circle" src="/images/{{auth()->user()->profilepic}}" alt="User profile picture">
             </div>
             <h3 class="profile-username text-center">{{auth()->user()->fname}}, {{auth()->user()->lname}}</h3>
             
