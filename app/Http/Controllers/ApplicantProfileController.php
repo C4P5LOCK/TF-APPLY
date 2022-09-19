@@ -16,7 +16,7 @@ class ApplicantProfileController extends Controller
     {
         $user = auth()->user();
         $users = User::where('id',$user->id)->first();
-        $form = Form::where('user_id',$user->id)->first();
+        $form =  Form::where('user_id',$user->id)->first();
 
       
         return view('Applicant.Profile.index',compact('users','form'));
@@ -66,9 +66,9 @@ class ApplicantProfileController extends Controller
         //
         $user = auth()->user();
         //$users = User::where('id',$user->id)->first();
-        // $form = Form::where('user_id',$user->id)->first();
+        $form = Form::where('user_id',$user->id)->first();
 
-        return view ('Applicant.Profile.edit',compact('user'));
+        return view ('Applicant.Profile.edit',compact('user','form'));
     }
 
     /**

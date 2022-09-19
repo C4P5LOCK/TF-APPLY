@@ -72,23 +72,20 @@
                     </div>
 
                     <div class="form-group"><label class="control-label">Other Name</label>
-                        <input aria-describedby="addon-right addon-left" placeholder="Other Name" name="mname" value="{{auth()->user()->mname}}" class="form-control">
+                        <input aria-describedby="addon-right addon-left" placeholder="Other Name" name="mname" value="{{$form ? $form->mname: 'Nil'}}" class="form-control">
                         @if($errors->has('mname'))
                             <div class="error">{{ $errors->first('fname','First Name required') }}</div>
                             @endif
                     </div>
 
                     <div class="form-group">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                              <span class="input-group-text">Upload Profile Picture</span>
-                            </div>
-                            <div class="custom-file">
-                              <input type="file" class="custom-file-input" name="profilepic" id="inputGroupFile01">
-                              <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                            </div>
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label">Choose Profile Pic</label>
+                            <input class="form-control" name="profilepic" type="file" id="formFile">
                           </div>
                     </div>
+
+                     
                         
                     <button type="submit" class="btn btn-primary">Update</button>  
                     

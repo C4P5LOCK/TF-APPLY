@@ -4,7 +4,7 @@
 
 {{-- <h1>Applicant Profile</h1>
 
-@if($users)
+@if($form)
 
 @foreach($users as $user)
 
@@ -14,7 +14,7 @@
     @endforeach
 
     @endif --}}
-
+   
   <div class="row mt-5">
     
         <div class="col-md-3">
@@ -53,11 +53,11 @@
             <div class="card-body">
             <strong><i class="fas fa-book mr-1"></i> Education</strong>
             <p class="text-muted">
-            {{$form->institution}}
+            {{$form ? $form->institution : 'No record yet!'}}
             </p>
             <hr>
             <strong><i class="fas fa-map-marker-alt mr-1"></i> Location</strong>
-            <p class="text-muted">{{$form->country}}, {{$form->state}}</p>
+            <p class="text-muted">{{$form ? $form->country : 'No record yet'}}</p>
             <hr>
             <strong><i class="fas fa-pencil-alt mr-1"></i> Skills</strong>
             <p class="text-muted">
