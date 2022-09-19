@@ -156,7 +156,22 @@
                             </div><!--end of row--><br>     
 
                         </div>
+<div class="row">
+                        <div class="col-sm-4 mb-3">
+                            <label for="formFile" class="form-label">Upload Degree (A Level) </label>
+                            <input class="form-control" type="file" id="formFile">
+                        </div>
 
+                        <div class="col-sm-4 mb-3">
+                            <label for="formFile" class="form-label">Upload SSCE</label>
+                            <input class="form-control" type="file" id="formFile">
+                        </div>
+
+                        <div class="col-sm-4 mb-3">
+                            <label for="formFile" class="form-label">Upload CV</label>
+                            <input class="form-control" type="file" id="formFile">
+                        </div>
+</div>
                         <button type="submit" class="btn btn-primary">Submit</button>      
                  </form>
                 
