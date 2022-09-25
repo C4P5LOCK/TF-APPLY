@@ -46,16 +46,17 @@ class ApplicantFormController extends Controller
     {
         //
         $user = Auth::user();
-
+        
         $input = $request->all();
-        $user->form()->create($input); //This enters the user_id to the form table
-      
+       
+        $user->form()->create($inputs); //This enters the user_id to the form table
+       
         //This part is suppose to update the form_id on users table to this new form id
         $userformid = User::where('id',$user->id)->first();
         $userformid->form_id = $user->form->id;
         $userformid->save();
 
-       //return dd($userformid);
+       //return dd($inputs);
        return redirect('/applicant')->with('success','Form submitted sucessfully!');
         
     }

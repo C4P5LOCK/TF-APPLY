@@ -28,7 +28,6 @@ class CreateFormsTable extends Migration
             $table->string('zip');
             $table->string('institution');
             $table->string('qualification');
-            $table->integer('upload_id');
             $table->timestamps();
         });
     }

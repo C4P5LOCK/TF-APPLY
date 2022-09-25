@@ -17,6 +17,7 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->integer('role_id')->default(2);
             $table->integer('form_id')->default(0);
+            $table->integer('upload_id');
             $table->string('fname');
             $table->string('lname');
             $table->string('email')->unique();

@@ -35,6 +35,8 @@ class ApplicationFormRequest extends FormRequest
             'zip'    =>  'required',
             'institution' => 'required',
             'qualification' => 'required',
+        
+
             
         ];
     }

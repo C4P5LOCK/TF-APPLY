@@ -29,6 +29,7 @@ Route::group(['middleware' => 'verified'],function(){
     Route::resource('/applicant',App\Http\Controllers\ApplicantController::class);
     Route::resource('/profile',App\Http\Controllers\ApplicantProfileController::class);
     Route::resource('/form',App\Http\Controllers\ApplicantFormController::class);
+    //Route::resource('/uploads',App\Http\Controllers\UploadsController::class);
     //Route::get('/layouts/applicantdash',App\Http\Controllers\ApplicantDashboardController::class);
    
 });
@@ -42,3 +43,4 @@ Route::group(['middleware' => ['verified','admin']],function(){
 });
 
 Route::get('/try', [App\Http\Controllers\ApplicantProfileController::class, 'try']);
+Route::resource('/uploads',App\Http\Controllers\UploadsController::class);

@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Upload extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'degree','ssce','resume'
+    ];
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }

@@ -15,6 +15,7 @@ class CreateUploadsTable extends Migration
     {
         Schema::create('uploads', function (Blueprint $table) {
             $table->id();
+            $table->integer('user_id');
             $table->string('degree');
             $table->string('ssce');
             $table->string('resume');
