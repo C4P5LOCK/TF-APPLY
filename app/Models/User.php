@@ -50,6 +50,13 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasOne(Role::class);
     }
 
+    public function upload(){
+        return $this->hasOne(Upload::class);
+    }
+
+    public function form(){
+        return $this->hasOne(Form::class);
+    }
 
     
 }

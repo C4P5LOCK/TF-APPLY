@@ -49,7 +49,7 @@ class ApplicantFormController extends Controller
         
         $input = $request->all();
        
-        $user->form()->create($inputs); //This enters the user_id to the form table
+        $user->form()->create($input); //This enters the user_id to the form table
        
         //This part is suppose to update the form_id on users table to this new form id
         $userformid = User::where('id',$user->id)->first();
