@@ -25,7 +25,7 @@ Auth::routes(['verify' =>true]);
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('verified');
 
 //APPLICANT ROUTES
-Route::group(['middleware' => 'verified'],function(){
+Route::group(['middleware' => 'verified','applicant'],function(){
     Route::resource('/applicant',App\Http\Controllers\ApplicantController::class);
     Route::resource('/profile',App\Http\Controllers\ApplicantProfileController::class);
     Route::resource('/form',App\Http\Controllers\ApplicantFormController::class);
@@ -39,6 +39,7 @@ Route::group(['middleware' => 'verified'],function(){
 Route::group(['middleware' => ['verified','admin']],function(){
     Route::resource('/admin',App\Http\Controllers\AdminController::class);
     Route::resource('/users',App\Http\Controllers\AdminUsersController::class);
+    Route::resource('/applicants',App\Http\Controllers\AdminApplicantsController::class);
 
 });
 
