@@ -18,8 +18,9 @@ class UploadsController extends Controller
     {
         //
         $user = auth()->user();
+        $file = Upload::all()->first();
         $uploads = Upload::where('user_id',$user->id)->first();
-        return view('Applicant.Uploads.index',compact('uploads'));
+        return view('Applicant.Uploads.index',compact('uploads','file'));
     }
 
     /**
@@ -86,6 +87,8 @@ class UploadsController extends Controller
     public function show($id)
     {
         //
+        $file = Upload::findOrFail($id);
+        return view('Applicant.Uploads.show',compact('file'));
     }
 
     /**
