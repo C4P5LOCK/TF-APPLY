@@ -8,7 +8,7 @@
                 <div class="card-header">All TF-Apply Applicants</div>
                 <div class="card-body">
 
-
+                    @if(count($applicants)>1)
         <table class="table table-striped">
             <thead class="thead">
             <tr>
@@ -34,18 +34,23 @@
                 <td>{{$applicant->phone}}</td>
                 <td>{{$applicant->address1}}</td>
                 <td><a href="{{route('applicants.show',$applicant->id)}}">View</a></td>
-                <td><a href="{{route('applicants.destroy',$applicant->id),action('App\Http\Controllers\AdminApplicantsController@destroy',$applicant->id)}}">Delete</a></td>
-                
-                <form method="DELETE" action={{action('App\Http\Controllers\AdminApplicantsController@destroy',$applicant->id)}}>
-                    <button type="submit" class="btn btn-danger">Delete</button> 
-                </form>
+                <td>
+                    <form method="post" action="{{route('applicants.destroy',$applicant->id)}}">
+                        @method('delete')
+                        @csrf
+                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    </form>
+                </td>
                 
             </tr>
                    @endforeach
             </tbody>
         </table>
 
-       
+        @else
+        <h2>No Applicants yet</h2>
+        @endif
+          
 
 
   

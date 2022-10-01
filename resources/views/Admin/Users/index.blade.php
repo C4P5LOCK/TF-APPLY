@@ -8,7 +8,8 @@
                 <div class="card-header">All Users</div>
                 <div class="card-body">
 
-
+                    @if(count($users)>0)
+                    
         <table class="table table-striped">
             <thead class="thead">
             <tr>
@@ -21,7 +22,7 @@
             </thead>
 
             <tbody>
-                @if(count($users)>1)
+               
                     @foreach($users as $user)
             <tr>
                 <th scope="row">{{$user->id}}</th>
@@ -30,14 +31,22 @@
                 <td>{{$user->mname}}</td>
                 <td>{{$user->email}}</td>
                 <td>View</td>
-                <td>Delete</td>
+                <td>
+                   
+                    <form method="post" action="{{route('users.destroy',$user->id)}}">
+                        @method('delete')
+                        @csrf
+                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    </form>
+                  
+                </td>
             </tr>
                    @endforeach
             </tbody>
         </table>
 
         @else
-<h2>No users yet</h2>
+<h2>No Users yet</h2>
 @endif
   
                 </div>

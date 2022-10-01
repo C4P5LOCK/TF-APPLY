@@ -15,7 +15,7 @@ class AdminUsersController extends Controller
     public function index()
     {
         //
-        $users = User::all();
+        $users = User::where('role_id',2)->get();
         return view ('Admin.Users.index',compact('users'));
     }
 
@@ -82,6 +82,9 @@ class AdminUsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+       $user = User::findOrFail($id);
+       $user->delete();
+       return back()->with('sucess','User deleted succesfully!');
+        
     }
 }
