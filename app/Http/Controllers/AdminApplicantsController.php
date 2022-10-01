@@ -89,7 +89,8 @@ class AdminApplicantsController extends Controller
     public function destroy($id)
     {
         $applicant = Form::findOrFail($id);
-        $applicant->delete();
-        return back();
+        return dd($applicant);
+        // $applicant->delete();
+        // return back();
     }
 }

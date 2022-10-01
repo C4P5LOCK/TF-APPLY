@@ -9,7 +9,8 @@
                 <div class="card-body">
                    
                     @if($uploads)
-                    <img src="/images/{{$file->degree}}" height="150" width="150">
+                    
+                    <img src="public/images/{{$file->degree}}" height="150" width="150">
                         <li><a href="{{route('uploads.show',$file->degree)}}">A-Level</a></li>
                         <li><a href="{{route('uploads.show',$file->ssce)}}">O-Level/SSCE</a></li>
                         <li><a href="#">Resume/CV</a></li>

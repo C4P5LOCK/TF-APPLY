@@ -83,6 +83,8 @@ class AdminUsersController extends Controller
     public function destroy($id)
     {
        $user = User::findOrFail($id);
+       $user->upload()->delete();
+       $user->form()->delete();
        $user->delete();
        return back()->with('sucess','User deleted succesfully!');
         

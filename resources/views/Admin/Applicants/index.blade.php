@@ -8,7 +8,7 @@
                 <div class="card-header">All TF-Apply Applicants</div>
                 <div class="card-body">
 
-                    @if(count($applicants)>1)
+                    @if(count($applicants)>0)
         <table class="table table-striped">
             <thead class="thead">
             <tr>
